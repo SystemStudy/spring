@@ -35,5 +35,6 @@ public class RedisTest {
         //从连接池中获取redis连接
         Jedis jedis = pool.getResource();
         jedis.auth("960215@Xiaozhen");
+        System.out.println(jedis.get("Lirs"));
     }
 }
