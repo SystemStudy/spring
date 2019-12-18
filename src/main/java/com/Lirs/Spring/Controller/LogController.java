@@ -23,6 +23,7 @@ public class LogController {
     @Log(value = "测试记录多参数")
     @RequestMapping("/testParams")
     public String testParams(String arg , String username){
+        System.out.println("***********************被代理的方法执行**********************");
         return username + " : " + arg;
     }
 

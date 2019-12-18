@@ -27,9 +27,6 @@ public class SysLogAspect {
     private SysLogMapper mapper;
     @Autowired
     private SysThrowMapper throwMapper;
-
-//    @Pointcut("@annotation(com.Lirs.Spring.annotation.Log)")
-//    public void pointcut() {}
     @Pointcut("execution(public * com.Lirs.Spring.Controller.LogController.*(..))")
     private void pointcut(){}
 
@@ -38,10 +35,9 @@ public class SysLogAspect {
      * @param point
      * @return
      */
-     //   @Around(value = "execution(public * com.Lirs.Spring.Controller.*.*(..))")
     @Around(value = "pointcut()")
     public Object around(ProceedingJoinPoint point) throws Throwable{
-        System.out.println("=========================Around======================================");
+        System.out.println("=========================Around执行======================================");
         long begin = System.currentTimeMillis();
         System.out.println("@Around:模拟around环绕增强");
         System.out.println("@Around:原本输入的参数" + Arrays.toString(point.getArgs()));
@@ -62,52 +58,63 @@ public class SysLogAspect {
         long time = System.currentTimeMillis() - begin;
         System.out.println("@Around：记录日志");
         saveLog(point,time);
-        System.out.println("=========================Around======================================");
+        System.out.println("=========================Around执行完毕======================================");
         return result;
     }
 
     /**
-     * 前置增强 增强mapper下的SysLogMapper
+     * 前置增强
      * @param point
      * @return
      */
-    //@Before("execution(public * com.Lirs.Spring.Controller.UserController.*(..))")
     @Before("pointcut()")
     public void before(JoinPoint point){
-        System.out.println("=========================Before======================================");
+        System.out.println("=========================Before执行======================================");
         long begin = System.currentTimeMillis();
         System.out.println("@Before:模拟权限检查。。。");
-        System.out.println("@Before:目标方法为：" +
-                point.getSignature().getName());
+        System.out.println("@Before:目标方法为：" + point.getSignature().getName());
         System.out.println("@Before: 参数为：" + Arrays.toString(point.getArgs()));
         System.out.println("@Before:被织入的目标对象为：" + point.getTarget());
-        System.out.println("=========================Before======================================");
+        System.out.println("=========================Before执行完毕======================================");
     }
 
+    /**
+     *  方法执行完成后增强
+     * @param point
+     * @param returnValue
+     */
     @AfterReturning(value = "pointcut()",returning = "returnValue")
     public void afterReturing(JoinPoint point,Object returnValue){
-        System.out.println("=========================AfterReturing===============================");
+        System.out.println("=========================AfterReturing执行===============================");
         System.out.println("@AferReturing:模拟方法执行完成后");
         System.out.println("@AferReturing:方法名为：" +
                 point.getSignature().getName());
         System.out.println("@AferReturing:方法的参数为：" + Arrays.toString(point.getArgs()));
         System.out.println("@AferReturing:方法的返回值为：" + returnValue);
-        System.out.println("=========================AfterReturing===============================");
+        System.out.println("=========================AfterReturing执行完毕===============================");
     }
 
+    /**
+     * fina增强
+     * @param joinPoint
+     */
     @After("pointcut()")
     public void afterFinall(JoinPoint joinPoint){
         System.out.println("@After:模拟释放资源");
     }
 
-    @AfterThrowing(value = "execution(public * com.Lirs.Spring.Controller.UserController.*(..))",throwing = "ex")
-    //@AfterThrowing(value = "pointcut()",throwing = "ex")
+    /**
+     * 异常抛出增强
+     * @param point
+     * @param ex
+     */
+    @AfterThrowing(value = "pointcut()",throwing = "ex")
     public void afterThrowing(JoinPoint point,Throwable ex){
-        System.out.println("=========================AfterThrowing===============================");
+        System.out.println("=========================AfterThrowing执行===============================");
         System.out.println("@AfterThrowing：捕获到了异常：" + ex.toString());
         System.out.println("@AfterThrowing:记录日志");
         saveThrow(point,ex);
-        System.out.println("=========================AfterThrowing===============================");
+        System.out.println("=========================AfterThrowing执行完毕===============================");
     }
 
     /**
