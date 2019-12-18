@@ -1,6 +1,10 @@
 package com.Lirs.Spring.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 7296187997094048881L;
     private String id;
     private String username;
     private String passowrd;

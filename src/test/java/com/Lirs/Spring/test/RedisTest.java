@@ -1,4 +1,4 @@
-package com.Lirs.Spring;
+package com.Lirs.Spring.test;
 
 import com.Lirs.Spring.util.RedisUtil;
 import org.junit.jupiter.api.Test;
@@ -6,10 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApplicationTests {
+public class RedisTest {
 
-	@Test
-	void contextLoads() {
-	}
+    @Autowired
+    RedisUtil util;
+
+    @Test
+    public void redis(){
+        util.set("Lirs","Xiaozhen");
+        System.out.println(util.get("Lirs"));
+    }
 
 }

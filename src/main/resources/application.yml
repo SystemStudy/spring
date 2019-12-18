@@ -87,3 +87,25 @@ spring:
       pool-prepared-statements: true
       max-open-prepared-statements: 20
       max-pool-prepared-statement-per-connection-size: 20
+  ##配置redis
+  redis:
+    #redis地址
+    host: 192.168.80.130
+    #redis密码，默认为空
+    password: 960215@Xiaozhen
+    #redis端口
+    port: 6379
+    #超时连接 毫秒
+    timeout: 3000
+    #redis数据库索引，默认是0号数据库
+    database: 0
+    jedis:
+      pool:
+        #最大空闲连接
+        max-idle: 8
+        #最小空闲链家
+        min-idle: 1
+        #最大连接数
+        max-active: 10
+        #最大阻塞等待时间，-1ms表示没有限制
+        max-wait: -1ms
