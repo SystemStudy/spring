@@ -7,14 +7,24 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class RedisTest {
-
     @Autowired
-    RedisUtil util;
+    RedisUtil redisUtil;
+
+
 
     @Test
     public void redis(){
-        util.set("Lirs","Xiaozhen");
-        System.out.println(util.get("Lirs"));
+        Double result = redisUtil.incr("number",new Double(1));
+        Double result2 = redisUtil.decr("number",new Double(0.1));
+        System.out.println(result);
+        System.out.println(result2);
+    }
+
+    @Test
+    public void redisHash(){
+        boolean is = redisUtil.hset("user","username","admin");
+        if(is)
+            System.out.println(redisUtil.hmget("user"));
     }
 
 }
