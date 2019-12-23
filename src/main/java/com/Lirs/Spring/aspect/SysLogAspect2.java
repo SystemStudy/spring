@@ -24,7 +24,7 @@
 //    @Autowired
 //    private SysLogMapper mapper;
 //
-//    @Pointcut("execution(public * com.Lirs.Spring.Controller.LogController.*(..))")
+//    @Pointcut("execution(public * com.Lirs.Spring.controller.LogController.*(..))")
 //    private void pointcut(){}
 //
 //   // @Before("pointcut()")

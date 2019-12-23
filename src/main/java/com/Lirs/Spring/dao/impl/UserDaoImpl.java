@@ -23,7 +23,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public int save(User user) {
        String sql = "insert into tb_user (id,username,password,sex,age) values(?,?,?,?,?)";
-        Object agrs[] = {user.getId(),user.getUsername(),user.getPassowrd(),user.getSex(),user.getAge()};
+        Object agrs[] = {user.getId(),user.getUsername(),user.getPassword(),user.getSex(),user.getAge()};
         return jdbcTemplate.update(sql,agrs,TYPE);
 
     }
@@ -31,7 +31,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public int update(User user) {
         String sql = "update tb_user set username = ? ,password = ? ,sex = ?, age = ? where id = '1'";
-        Object args[] = {user.getUsername(),user.getPassowrd(),user.getSex(),user.getAge()};
+        Object args[] = {user.getUsername(),user.getPassword(),user.getSex(),user.getAge()};
         int argsType[] = {Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.INTEGER};
         return jdbcTemplate.update(sql,args,argsType);
     }
@@ -77,7 +77,7 @@ class UserMapper implements RowMapper<User>{
     public User mapRow(ResultSet resultSet, int i) throws SQLException {
         User user = new User();
         user.setId(resultSet.getString("id"));
-        user.setPassowrd(resultSet.getString("password"));
+        user.setPassword(resultSet.getString("password"));
         user.setUsername(resultSet.getString("username"));
         user.setSex(resultSet.getString("sex"));
         user.setAge(resultSet.getInt("age"));

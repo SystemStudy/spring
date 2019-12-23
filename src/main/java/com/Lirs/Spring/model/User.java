@@ -7,7 +7,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 7296187997094048881L;
     private String id;
     private String username;
-    private String passowrd;
+    private String password;
     private String sex;
     private int age;
 
@@ -16,7 +16,7 @@ public class User implements Serializable {
         return "User{" +
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
-                ", passowrd='" + passowrd + '\'' +
+                ", passowrd='" + password + '\'' +
                 ", sex='" + sex + '\'' +
                 ", age=" + age +
                 '}';
@@ -38,12 +38,16 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public String getPassowrd() {
-        return passowrd;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public void setPassowrd(String passowrd) {
-        this.passowrd = passowrd;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getSex() {

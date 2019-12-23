@@ -1,4 +1,4 @@
-package com.Lirs.Spring.Controller;
+package com.Lirs.Spring.controller;
 
 import com.Lirs.Spring.annotation.Log;
 import org.springframework.web.bind.annotation.RequestMapping;

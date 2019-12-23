@@ -12,7 +12,7 @@ public class HttpUtil {
 
     /**
      * 获取客户端IP地址
-     * 如果使用了Nginx等软件进行代理，则不能使用哪个reuqest.getRemoteAddr获取IP地址
+     * 如果使用了Nginx等软件进行代理，则不能使用reuqest.getRemoteAddr获取IP地址
      * 如果使用了多级反向代理的话，x-forwarded-for的值不止一个，真正的客户端IP地址就是第一个非unknown的有效IP字符串
      * @param request
      * @return
