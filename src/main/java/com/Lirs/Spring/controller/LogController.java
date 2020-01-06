@@ -36,4 +36,8 @@ public class LogController {
 	public String test(){
 		return "测试多项目分支合并,test分支";
 	}
+
+	public String test2(){
+        return "第二次测试";
+    }
 }
