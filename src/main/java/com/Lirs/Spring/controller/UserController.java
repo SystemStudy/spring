@@ -1,15 +1,10 @@
 package com.Lirs.Spring.controller;
 
-import com.Lirs.Spring.localMapper.UserMapper;
-import com.Lirs.Spring.model.User;
 import com.Lirs.Spring.service.UserService;
-import com.Lirs.Spring.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -17,8 +12,6 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
-    @Autowired
-    private UserMapper mapper;
 
     @RequestMapping("/login")
     public Object login(String username, String password){
@@ -32,6 +25,5 @@ public class UserController {
             return map.get("message");
         }
     }
-
 
 }

@@ -32,4 +32,8 @@ public class LogController {
     public String testThrow(String arg){
         throw new RuntimeException();
     }
+	
+	public String test(){
+		return "测试多项目分支合并,test分支";
+	}
 }
