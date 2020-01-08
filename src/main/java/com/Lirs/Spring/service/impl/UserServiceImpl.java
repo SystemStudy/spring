@@ -7,8 +7,8 @@ import com.Lirs.Spring.util.RedisUtil;
 import com.Lirs.Spring.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -51,6 +51,31 @@ public class UserServiceImpl implements UserService {
             map.put("message","登陆失败，您还剩" + count +"次登陆机会");
             return map;
         }
+    }
+
+    @Override
+    public List<User> selectAll() {
+        return userMapper.selectAll();
+    }
+
+    @Override
+    public void deleteUserById(String id) {
+        try{
+            userMapper.deleteById(id);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public User update(User user) {
+        userMapper.update(user);
+        return userMapper.selectById(user.getId());
+    }
+
+    @Override
+    public User selectById(String id) {
+        return userMapper.selectById(id);
     }
 
 
