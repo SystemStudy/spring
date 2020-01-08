@@ -4,7 +4,6 @@ server:
   servlet:
     context-path: /Spring
 
-
 spring:
   datasource:
     druid:
@@ -98,3 +97,9 @@ spring:
     timeout: 3000
     #redis数据库索引，默认是0号数据库
     database: 0
+logging:
+  level:
+    com:
+      Lirs:
+        Spring:
+          localMapper: debug
