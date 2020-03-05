@@ -40,4 +40,8 @@ public class LogController {
 	public String test2(){
         return "第二次测试";
     }
+	
+	public String test3(){
+		return null;
+	}
 }
